@@ -7,17 +7,18 @@ html
     transition: .3s
 
 body
-    background-color: #E5E5E5
+    background-color: black
 
 // Ширина всех контейнеров
 .container
-    width: 1440px
+    max-width: 1440px
+    width: 100%
     margin: 0 auto
     background: black
 
 // Стили заголовков
 .title-wrapper
-    width: 700px
+    max-width: 700px
     padding: 15px 0
     background-image: linear-gradient(to top, #000 39px, #bdae82 39px, #bdae82 41px, #000 41px )
     margin: 0 auto
@@ -33,6 +34,28 @@ body
     background: black
     display: inline-block
 
+// Стили для отднотипных кнопок    
+@mixin button
+    height: 55px
+    width: 220px
+    border: 0
+    background: rgba(189, 174, 130, 1)
+    span
+        font-family: Inter
+        font-size: 20px
+        font-weight: 400
+        text-align: center
+        color: rgba(0, 0, 0, 1)
+
+@mixin hero-title
+    width: 500px
+    height: 120px
+    margin: 0 0 10px 0
+    h1
+        font-family: Merriweather
+        font-size: 60px
+        color: rgba(255, 255, 255, 1)
+
 //----------------------------------------------------------------------------------------------------------------------
 // Header    
 .header-container
@@ -47,7 +70,7 @@ body
             background-image: url(./assets/svg/logo.svg)
             background-size: contain
             background-repeat: no-repeat
-            transition: 0.3s
+            transition: .3s
             height: 40px
             width: 50px
             margin-right: 100%
@@ -74,7 +97,7 @@ body
                         transition: color 0.5s
                         padding: 20px 0
                     a:hover
-                        opacity: .7
+                        color: rgba(189, 174, 130, 1)
         .lang-switcher
             display: flex
             button
@@ -88,7 +111,8 @@ body
                 transition: .3s
                 span:hover
                     cursor: pointer
-                    opacity: .6
+                    color: rgba(189, 174, 130, 1)
+
             button:first-child
                 margin-right: 9px
             button:last-child
@@ -101,21 +125,14 @@ body
 //--------------------------------------------------------------------------------------------------------------------------
 // section-hero 
 .section-hero
+
     background-image: url('./assets/img/header-bg.jpg')
     background-position: center -90px
     background-repeat: no-repeat
-    padding-left: 80px
-    height: 820px
+    padding: 160px 80px 330px 80px
 
     .hero-title
-        width: 500px
-        height: 120px
-        margin: 0 0 10px 0
-        padding-top: 160px
-        h1
-            font-family: Merriweather
-            font-size: 60px
-            color: rgba(255, 255, 255, 1)
+        @include hero-title
     .hero-text
         width: 470px
         height: 120px
@@ -127,19 +144,11 @@ body
             line-height: 40px
             color: rgba(255, 255, 255, 1)
     .hero-button
-        height: 55px
-        width: 220px
-        border: 0
-        background: rgba(189, 174, 130, 1)
-        span
-            font-family: Inter
-            font-size: 20px
-            font-weight: 400
-            text-align: center
-            color: rgba(0, 0, 0, 1)
+        @include button
     .hero-button:hover
-        opacity: .7
         cursor: pointer
+        span
+            color: white
 
 //-------------------------------------------------------------------------------------------------------------------
 // section-skills
@@ -180,10 +189,9 @@ body
         .item-season
             margin-bottom: 60px
             button
-                width: 220px
-                height: 55px
-                border: 2px solid #BDAE82
-                background: #000
+                @include button
+                background-color: black
+                border: solid 1px rgba(189, 174, 130, 1)
                 span
                     font-family: Inter
                     font-size: 20px
@@ -192,9 +200,8 @@ body
                     color: rgba(189, 174, 130, 1)
             button:hover
                 cursor: pointer
-                background-color: rgba(189, 174, 130, 1)
                 span
-                    color: black
+                    color: white
     .wrapper-foto
         display: flex
         flex-wrap: wrap
@@ -217,6 +224,8 @@ body
         width: 130px
         height: 130px
         position: absolute
+    .video-button:hover
+        filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%)
 //-------------------------------------------------------------------------------------------------------------------------------
 // section-price
 .section-price
@@ -253,24 +262,11 @@ body
                     text-align: center
                     color: rgba(255, 255, 255, 1)
         .order-button
-            height: 50px
-            width: 220px
-            background-color: rgba(189, 174, 130, 1)
-            border: none
-            span
-                font-family: Inter
-                font-size: 20px
-                font-weight: 400
-                color: black
-                text-align: center
-                border: none
+            @include button
         .order-button:hover
             cursor: pointer
-            border: 1px solid rgba(189, 174, 130, 1)
-            background-color: black
-            opacity: .7
             span
-                color: rgba(189, 174, 130, 1)
+                color: white
     .wrapper-tariffs:last-child
         gap: 0
 //-------------------------------------------------------------------------------------------------------------------------------
@@ -283,14 +279,14 @@ body
     background: url("./assets/img/contacts-bg.jpg")
 
     .wrapper-form
-        margin-left: auto
+        margin-left: 950px
         .section-title
             background: none
             padding: 0
             height: 80px
             width: 450px
             margin: 60px 0 40px 0
-            p
+            span
                 padding: 20px 0
         .contact-form
             form
@@ -302,8 +298,10 @@ body
                     margin-bottom: 20px
                     background: rgba(0, 0, 0, 0.5)
                     border: 2px solid rgba(189, 174, 130, 1)
+                    font-size: 20px
                     font-weight: 400
                     padding-left: 20px
+                    color: rgba(189, 174, 130, 1)
                 textarea
                     width: 450px
                     height: 100px
@@ -316,6 +314,7 @@ body
                     line-height: 40px
                     resize: none
                     padding-left: 20px
+                    color: rgba(189, 174, 130, 1)
                 input::placeholder
                     font-family: inherit
                     color: #bdae82
@@ -324,6 +323,13 @@ body
                     font-family: inherit
                     color: #bdae82
                     font-size: 20px
+        .button-form
+            @include button
+        .button-form:hover
+            cursor: pointer
+            span
+                color: white
+
 //----------------------------------------------------------------------------------------------------------------------------
 // footer
 .wrapper-footer
@@ -355,4 +361,42 @@ body
                     margin-right: 0
             a:hover
                 cursor: pointer
-                opacity: .5
+                filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%)
+
+// ------------------------------------------------------------------------------------------------------------------------------
+// Media Queries
+//@media all and (max-width: 1440px)
+
+@media all and (max-width: 768px)
+    // Поменяли стиль заголовков h2 с линиями
+    .title-wrapper
+        width: 364px
+        margin-bottom: 60px
+        padding: 20px 0
+    .section-title
+        font-size: 32px
+//----------------------------------------------------------------------------------------------------------------------------    
+
+    .header-container
+        padding: 25px 60px
+
+    .section-hero
+        padding: 58px 60px 152px 60px
+        background-image: url('./assets/img/tablet.bg.jpg')
+        .hero-title
+            height: 64px
+            h1
+                font-size: 32px
+                margin-bottom: 20px
+
+        .hero-text
+            p
+                max-width: 400px
+                line-height: 24.2px
+                font-size: 20px
+    .section-skills
+    .section-portfolio
+    .section-video
+    .section-price
+    .section-contacts
+    .wrapper-footer
